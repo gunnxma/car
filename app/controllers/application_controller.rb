@@ -46,14 +46,8 @@ class ApplicationController < ActionController::Base
   end
 
   def check_action
-    if params[:controller] = 'car_infos' && params[:action] = 'search'
-      if current_user.actions.where("controller = ? and action = ?", 'payments', 'index').empty? && current_user.actions.where("controller = ? and action = ?", 'proceeds', 'index').empty?
-        redirect_to controller: "index", action: "nopower"
-      end
-    else
-      if current_user.actions.where("controller = ? and action = ?", params[:controller], params[:action]).empty?
-        redirect_to controller: "index", action: "nopower"
-      end
+    if current_user.actions.where("controller = ? and action = ?", params[:controller], params[:action]).empty?
+      redirect_to controller: "index", action: "nopower"
     end
   end
 

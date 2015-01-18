@@ -372,6 +372,7 @@ actions = [
   {controller: 'proceeds', action: 'edit', name: '修改收款'},
   {controller: 'proceeds', action: 'update', name: '保存修改收款'},
   {controller: 'proceeds', action: 'destroy', name: '删除收款'},
+  {controller: 'car_infos', action: 'search', name: '收付款车辆查询'},
   {controller: 'profits', action: 'index', name: '利润分析'},
   {controller: 'repairs', action: 'index', name: '整备管理'},
   {controller: 'repairs', action: 'new', name: '增加整备'},
