@@ -5,7 +5,8 @@ class CarInfosController < ApplicationController
   end
 
   def search
-    @q = CarInfo.where("status > 0 and depot_id in (?)", current_user.depots_id).search(params[:q])
+    #@q = CarInfo.where("status > 0 and depot_id in (?)", current_user.depots_id).search(params[:q])
+    @q = CarInfo.where("status > 0").search(params[:q])
 
     @cars = @q.result.paginate(:page => params[:page]).order(addtime: :desc)
 
