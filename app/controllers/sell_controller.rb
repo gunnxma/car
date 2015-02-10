@@ -2,7 +2,7 @@ class SellController < ApplicationController
   before_filter :check_power
   def index
     if current_user.id == 1
-      @q = CarInfo.where("status = 2").search(params[:q])
+      @q = CarInfo.where("status = 2 and saletype <> '抵押'").search(params[:q])
     else
       #@q = CarInfo.where("status = 2 and user_id = ?", current_user.id).search(params[:q])
       @q = CarInfo.where("status = 2 and saletype<>'抵押'").search(params[:q])

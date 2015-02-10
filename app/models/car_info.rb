@@ -20,7 +20,9 @@ class CarInfo < ActiveRecord::Base
   validates :series, :presence => { :message => "车系不能为空" }
   validates :models, :presence => { :message => "型号不能为空" }
   validates :addtime, :presence => { :message => "收购日期不能为空" }
-  
+
+  validate :dy_validation
+ 
   before_save :check_price
   
   accepts_nested_attributes_for :car_property, :car_assess, :car_configuration, :cooperation
@@ -129,6 +131,19 @@ class CarInfo < ActiveRecord::Base
   def profit_costs
     #self.proceeds_costs - self.payment_costs - self.repair_costs
     self.proceeds_costs - self.payment_costs
+  end
+
+  private
+
+  def dy_validation
+    if saletype == '抵押'
+      if ownername.blank?
+        errors[:saletype] << "抵押车辆必须填写车主姓名"
+      end
+      if ownerphone.blank?
+        errors[:ownerphone] << "抵押车辆必须填写车主电话"
+      end
+    end
   end
   
 end
