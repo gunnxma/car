@@ -11,7 +11,7 @@
                   <%= link_to "删除", assessment_path(car), :method => :delete, data: { confirm: "确定要删除吗" } %>
                 </td>
                 <td><%= car.addtime.strftime("%Y-%m-%d") if car.addtime %></td>
-                <td><%= car.status == 0 ? "抵押" : "抵押到期" %></td>
+                <td><%= car.status >= 0 ? "抵押" : "抵押到期" %></td>
                 <td><%= car.ownername %></td>
                 <td><%= car.ownerphone %></td>
                 <td><%= "#{car.brand} #{car.series} #{car.models}" %></td>

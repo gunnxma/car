@@ -16,7 +16,7 @@
 						<h2>抵押车辆</h2>
 					</div>
 					<div class="box-content">
-            <%= search_form_for @q, :url => depot_index_path, :method => "get" do |f| %>
+            <%= search_form_for @q, :url => dy_index_path, :method => "get" do |f| %>
               <%= render partial: "search_form", locals: { f: f } %>
             <% end %>
             <table class="table table-striped table-bordered bootstrap-datatable">
