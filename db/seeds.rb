@@ -415,7 +415,10 @@ actions = [
   {controller: 'price_refs', action: 'create', name: '保存历史成交'},
   {controller: 'price_refs', action: 'edit', name: '修改历史成交'},
   {controller: 'price_refs', action: 'update', name: '保存修改历史成交'},
-  {controller: 'price_refs', action: 'destroy', name: '删除历史成交'}
+  {controller: 'price_refs', action: 'destroy', name: '删除历史成交'},
+  {controller: 'dy', action: 'index', name: '抵押车辆管理'},
+  {controller: 'dy', action: 'dy_start', name: '重新抵押车辆'},
+  {controller: 'dy', action: 'dy_end', name: '结束抵押车辆'}
 ]
 
 actions.each do |a|

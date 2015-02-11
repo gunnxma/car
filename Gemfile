@@ -62,3 +62,5 @@ gem 'puma'
 gem 'time_diff'
 
 gem 'mysql2'
+
+gem 'lazy_high_charts'

@@ -13,13 +13,40 @@ class IndexController < ApplicationController
     @today_selloff_count = CarInfo.where("selloff_time >= ? and selloff_time <= ?", Time.now.beginning_of_day, Time.now.end_of_day).count
     @today_customer_count = Customer.where("addtime >= ? and addtime <= ?", Time.now.beginning_of_day, Time.now.end_of_day).count
 
-    @diya_list = CarInfo.where("saletype = '抵押'").order(addtime: :desc)
+    @diya_list = CarInfo.where("saletype = '抵押' and status >= 0").order(addtime: :desc)
     @followups = Followup.where("followupable_type = ? and user_id = ?", "Customer", current_user.id).paginate(:page => params[:page]).order(addtime: :desc).take(10)
 
     if current_user.id == 1
       @customers = Customer.all.take(10)
     else
       @customers = Customer.where("user_id = ?", current_user.id).take(10)
+    end
+
+    #hightcharts
+    @chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(:text => "近六个月销售数量，收购数量，客户录入数量统计表")
+
+      categories = []
+      sells = []
+      buys = []
+      customers = []
+      6.times.each do |i|
+        categories << i.month.ago.strftime('%Y-%m')
+        sells << CarInfo.where(:selloff_time => i.month.ago.beginning_of_month..i.month.ago.end_of_month).count
+        buys << CarInfo.where(:addtime => i.month.ago.beginning_of_month..i.month.ago.end_of_month).where('saletype <> "抵押"').count
+        customers << Customer.where(:addtime => i.month.ago.beginning_of_month..i.month.ago.end_of_month).count
+      end
+      f.xAxis(:categories => categories)
+      f.series(:name => "销售数量", :data => sells)
+      f.series(:name => "收购数量", :data => buys)
+      f.series(:name => "客户录入数量", :data => customers)
+      
+      f.yAxis [
+        {:title => {:text => "数量"}, tickInterval: 1 },
+      ]
+
+      f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
+      f.chart({:defaultSeriesType=>"column"})
     end
   end
 

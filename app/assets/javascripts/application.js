@@ -57,6 +57,10 @@
 
 //= require datepicker-zh-TW
 
+//= require highcharts/highcharts                                                           
+//= require highcharts/highcharts-more                                                         
+//= require highcharts/highstock
+
 function printHtml(html) {
   var bodyHtml = document.body.innerHTML;
   document.body.innerHTML = html;

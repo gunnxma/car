@@ -21,6 +21,7 @@
             <li class="nav-header hidden-tablet">车辆库存</li>
             <li><%= link_to '库存管理', depot_index_path, :class => "ajax-link", 'data-no-turbolink' => true if @current_user.has_power("depot", "index") %></li>
             <li><%= link_to '整备管理', :repairs, :class => "ajax-link", 'data-no-turbolink' => true if @current_user.has_power("repairs", "index") %></li>
+            <li><%= link_to '抵押车辆', dy_index_path, :class => "ajax-link", 'data-no-turbolink' => true if @current_user.has_power("dy", "index") %></li>
             <li class="nav-header hidden-tablet">车辆销售</li>
             <li><%= link_to '销售管理', sell_index_path, :class => "ajax-link", 'data-no-turbolink' => true if @current_user.has_power("sell", "index") %></li>
             <li><%= link_to '售出管理', selloff_index_path, :class => "ajax-link", 'data-no-turbolink' => true if @current_user.has_power("selloff", "index") %></li>

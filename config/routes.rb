@@ -23,6 +23,10 @@ Car::Application.routes.draw do
   patch "selloff/update"
   delete "selloff/destroy"
 
+  get 'dy/index'
+  post 'dy/dy_start'
+  post 'dy/dy_end'
+
   resources :brands do
     resources :series
   end

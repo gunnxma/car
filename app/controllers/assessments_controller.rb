@@ -58,7 +58,11 @@ class AssessmentsController < ApplicationController
       if @car.status == 1
         redirect_to depot_index_path
       else
-        redirect_to :action => :index
+        if @car.saletype == '抵押'
+          redirect_to dy_index_path
+        else
+          redirect_to :action => :index
+        end
       end
     else
       brand = Brand.where(:name => @car.brand).first

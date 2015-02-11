@@ -1,0 +1,23 @@
+<tr>
+                <td><%= link_to car.car_no, car_info_path(car) %></td>
+                <td><%= car.depot.name if car.depot %></td>
+								<td class="center">
+                  <% if car.status < 0 %>
+                  <%= link_to "开始抵押", dy_dy_start_path(id: car.id), :method => :post %>
+                  <% else %>
+                  <%= link_to "抵押到期", dy_dy_end_path(id: car.id), :method => :post %>
+                  <% end %>                  
+                  <%= link_to "修改", edit_assessment_path(car) %>
+                  <%= link_to "删除", assessment_path(car), :method => :delete, data: { confirm: "确定要删除吗" } %>
+                </td>
+                <td><%= car.addtime.strftime("%Y-%m-%d") if car.addtime %></td>
+                <td><%= car.status == 0 ? "抵押" : "抵押到期" %></td>
+                <td><%= car.ownername %></td>
+                <td><%= car.ownerphone %></td>
+                <td><%= "#{car.brand} #{car.series} #{car.models}" %></td>
+                <td><%= car.platenumber %></td>
+                <td><%= car.car_property.cc if car.car_property %><%= car.car_property.cc_unit if car.car_property %></td>
+                <td><%= car.car_property.mileage if car.car_property %>万公里</td>
+                <td><%= "#{car.evaluate_price}万元" %></td>
+                <td><%= car.user.name if car.user %></td>
+							</tr>
