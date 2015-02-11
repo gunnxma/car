@@ -42,7 +42,7 @@ class IndexController < ApplicationController
       f.series(:name => "客户录入数量", :data => customers)
       
       f.yAxis [
-        {:title => {:text => "数量"}, tickInterval: 1 },
+        {:title => {:text => "数量"}},
       ]
 
       f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
