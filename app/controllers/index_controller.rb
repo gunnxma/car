@@ -24,13 +24,13 @@ class IndexController < ApplicationController
 
     #hightcharts
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(:text => "近六个月销售数量，收购数量，客户录入数量统计表")
+      f.title(:text => "近12个月销售数量，收购数量，客户录入数量统计表")
 
       categories = []
       sells = []
       buys = []
       customers = []
-      6.times.each do |i|
+      12.times.each do |i|
         categories << i.month.ago.strftime('%Y-%m')
         sells << CarInfo.where(:selloff_time => i.month.ago.beginning_of_month..i.month.ago.end_of_month).count
         buys << CarInfo.where(:addtime => i.month.ago.beginning_of_month..i.month.ago.end_of_month).where('saletype <> "抵押"').count
