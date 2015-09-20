@@ -47,7 +47,8 @@ gem 'jquery-turbolinks'
 
 gem 'china_city'
 
-gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
+#gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
+gem 'ransack', '~> 1.7.0'
 
 gem 'will_paginate', '~> 3.0'
 

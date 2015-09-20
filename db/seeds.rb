@@ -52,6 +52,7 @@ if Rating.count == 0
   Rating.create(name: '普通车源')
   Rating.create(name: '优质车源')
 end
+Rating.create(name: '精品车源') if Rating.where("name = ?", '精品车源').empty?
 
 if Transmission.count == 0
   Transmission.create(name: '手自一体')
@@ -420,6 +421,15 @@ actions = [
   {controller: 'dy', action: 'dy_start', name: '重新抵押车辆'},
   {controller: 'dy', action: 'dy_end', name: '结束抵押车辆'}
 ]
+
+keys = ['一把', '两把']
+keys.each do |a|
+  Yaochi.create(name: a) if Yaochi.where("name = ? ", a).empty?
+end
+Customer.where(:vip => nil).each do |item|
+  item.vip = 0
+  item.save
+end
 
 actions.each do |a|
   Action.create(controller: a[:controller], action: a[:action], name: a[:name]) if Action.where("controller = ? and action = ?", a[:controller], a[:action]).empty?

@@ -6,6 +6,12 @@
                   </div>
 							  </div>
                 <div class="control-group">
+                  <%= f.label :vip, "是否VIP客户", :class => "control-label" %>
+                  <div class="controls">
+                    <%= f.select :vip, [{id: 0, name: '否'},{id: 1, name: '是'}].collect { |p| [ p[:name], p[:id] ] } %>
+                  </div>
+                </div>
+                <div class="control-group">
                   <%= f.label :no, "客户编号", :class => "control-label" %>
                   <div class="controls">
                     <%= f.hidden_field :no %>

@@ -2,8 +2,11 @@
 diya_date = diya.addtime
 str = ""
 while diya_date < DateTime.now do
+  diya_date1 = diya_date + 29.days
+  diya_date2 = diya_date + 32.days
+  #str = "color:red" if diya_date.strftime("%Y-%m-%d") == DateTime.now.strftime("%Y-%m-%d")
+  str = "color:red" if (diya_date1 <= DateTime.now && DateTime.now <= diya_date2)
   diya_date = diya_date + 29.days
-  str = "color:red" if diya_date.strftime("%Y-%m-%d") == DateTime.now.strftime("%Y-%m-%d")
 end
 %>
 <tr style="<%= str%>">
@@ -11,5 +14,6 @@ end
   <td><%= diya.vin %></td>
   <td><%= diya.addtime.strftime("%Y-%m-%d") %></td>
   <td><%= "#{diya.brand} #{diya.series} #{diya.models}" %></td>
-  <td><%= diya.car_property.cc if diya.car_property %><%= diya.car_property.cc_unit if diya.car_property %></td>
+  <!--<td><%= diya.car_property.cc if diya.car_property %><%= diya.car_property.cc_unit if diya.car_property %></td>-->
+  <td><%= diya.ownerphone %></td>
 </tr>

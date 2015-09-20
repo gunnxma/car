@@ -33,6 +33,34 @@
                     </div>
                   </div>
                   <div class="control-group">
+                    <%= b.label :yaochi, "钥匙", :class => "control-label" %>
+                    <div class="controls">
+                      <% Yaochi.all.each do |r| %>
+                        <label class="checkbox inline">
+                          <%= b.radio_button :yaochi, r.name %><%= r.name %>
+                        </label>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <%= b.label :is_shuiben, "购置税本", :class => "control-label" %>
+                    <div class="controls">
+                      <%= b.select :is_shuiben, [{id: 0, name: '无'},{id: 1, name: '有'}].collect { |p| [ p[:name], p[:id] ] } %>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <%= b.label :is_shuomingshu, "说明书", :class => "control-label" %>
+                    <div class="controls">
+                      <%= b.select :is_shuomingshu, [{id: 0, name: '无'},{id: 1, name: '有'}].collect { |p| [ p[:name], p[:id] ] } %>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <%= b.label :is_baoyangshouce, "保养手册", :class => "control-label" %>
+                    <div class="controls">
+                      <%= b.select :is_baoyangshouce, [{id: 0, name: '无'},{id: 1, name: '有'}].collect { |p| [ p[:name], p[:id] ] } %>
+                    </div>
+                  </div>
+                  <div class="control-group">
                     <%= b.label :registration_province, "上牌地区", :class => "control-label" %>
                     <div class="controls city-group">
                       <%= b.select :registration_province, options_for_select(ChinaCity.list, @car.car_property.registration_province), { include_blank: "－省份－" }, :class => "city-select" %>
@@ -119,6 +147,12 @@
                           <%= b.select :compulsory_company, CompulsoryCompany.all.collect { |p| [ p.name, p.name ] }, { include_blank: true } %>
                         </div>
                     </div>
+                  </div>                  
+                  <div class="control-group">
+                    <%= b.label :jiao_bz, "备注", :class => "control-label" %>
+                    <div class="controls">
+                      <%= b.text_area :jiao_bz, :style => "width:480px;height:50px" %>
+                    </div>
                   </div>
                   <div class="control-group">
                     <%= b.label :business_info, "商业险信息", :class => "control-label" %>
@@ -148,6 +182,12 @@
                     <%= b.label :insurance_record, "出险记录", :class => "control-label" %>
                     <div class="controls">
                       <%= b.text_area :insurance_record, :style => "width:480px;height:50px" %>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <%= b.label :four_record, "4S店记录", :class => "control-label" %>
+                    <div class="controls">
+                      <%= b.text_area :four_record, :style => "width:480px;height:50px" %>
                     </div>
                   </div>
 

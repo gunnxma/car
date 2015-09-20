@@ -17,9 +17,9 @@ class IndexController < ApplicationController
     @followups = Followup.where("followupable_type = ? and user_id = ?", "Customer", current_user.id).paginate(:page => params[:page]).order(addtime: :desc).take(10)
 
     if current_user.id == 1
-      @customers = Customer.all.take(10)
+      @customers = Customer.all.order(addtime: :desc).take(10)
     else
-      @customers = Customer.where("user_id = ?", current_user.id).take(10)
+      @customers = Customer.where("user_id = ?", current_user.id).order(addtime: :desc).take(10)
     end
 
     #hightcharts

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120090957) do
+ActiveRecord::Schema.define(version: 20150920150156) do
 
   create_table "actions", force: true do |t|
     t.string   "controller"
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 20141120090957) do
     t.integer  "sell_user_id"
     t.datetime "selloff_time"
     t.integer  "depot_id"
+    t.string   "key"
   end
 
   create_table "car_nos", force: true do |t|
@@ -180,6 +181,12 @@ ActiveRecord::Schema.define(version: 20141120090957) do
     t.string   "insurance_record"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "yaochi"
+    t.string   "is_shuiben"
+    t.string   "is_shuomingshu"
+    t.string   "is_baoyangshouce"
+    t.string   "four_record"
+    t.string   "jiao_bz"
   end
 
   create_table "car_sorts", force: true do |t|
@@ -331,6 +338,7 @@ ActiveRecord::Schema.define(version: 20141120090957) do
     t.datetime "addtime"
     t.datetime "visit_date"
     t.string   "other"
+    t.integer  "vip",            limit: 255
   end
 
   create_table "departments", force: true do |t|
@@ -407,6 +415,12 @@ ActiveRecord::Schema.define(version: 20141120090957) do
   create_table "interior_colors", force: true do |t|
     t.string   "name"
     t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "keys", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -665,6 +679,12 @@ ActiveRecord::Schema.define(version: 20141120090957) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tip_id"
+  end
+
+  create_table "yaochis", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
