@@ -1,15 +1,15 @@
 <tr>
-                <td><%= repair.car_info.car_no %></td>
-                <td><%= repair.car_info.depot.name if repair.car_info.depot %></td>
+                <td><%= repair.car_info ? repair.car_info.car_no : "车辆已删除" %></td>
+                <td><%= repair.car_info.depot.name if repair.car_info && repair.car_info.depot %></td>
 								<td class="center">
                   <%= link_to "审核", check_repair_path(repair), :method => :post %>
                   <%= link_to "修改", edit_repair_path(repair) %>
                   <%= link_to "删除", repair_path(repair), :method => :delete, data: { confirm: "确定要删除吗" } %>
                 </td>
                 <td><%= repair.check_str %></td>
-                <td><%= repair.car_info.info %></td>
-                <td><%= repair.car_info.platenumber %></td>
-                <td><%= repair.car_info.vin %></td>
+                <td><%= repair.car_info.info if repair.car_info %></td>
+                <td><%= repair.car_info.platenumber if repair.car_info %></td>
+                <td><%= repair.car_info.vin if repair.car_info %></td>
                 <td>
                   共有<%= repair.repair_details.count %>个项目<br>
                   <% repair.repair_details.each_with_index do |item, i| %>

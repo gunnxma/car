@@ -1,14 +1,14 @@
 <tr>
-  <td><%= proceed.car_info.car_no %></td>
-  <td><%= proceed.car_info.depot.name if proceed.car_info.depot %></td>
+  <td><%= proceed.car_info ? proceed.car_info.car_no : '车辆已删除' %></td>
+  <td><%= proceed.car_info.depot.name if proceed.car_info && proceed.car_info.depot %></td>
 								<td class="center">
                   <%= link_to "修改", edit_proceed_path(proceed) %>
                   <%= link_to "删除", proceed_path(proceed), :method => :delete, data: { confirm: "确定要删除吗" } %>
                 </td>
-                <td><%= proceed.car_info.info %></td>
-                <td><%= proceed.car_info.vin %></td>
-                <td><%= proceed.car_info.procurement_price %>万</td>
-                <td><%= proceed.car_info.deal_price %>万</td>
+                <td><%= proceed.car_info.info if proceed.car_info %></td>
+                <td><%= proceed.car_info.vin if proceed.car_info %></td>
+                <td><%= proceed.car_info.procurement_price if proceed.car_info %>万</td>
+                <td><%= proceed.car_info.deal_price if proceed.car_info %>万</td>
                 <td>
                   共有<%= proceed.proceeds_details.count %>个项目<br>
                   <% proceed.proceeds_details.each do |item| %>
