@@ -132,7 +132,6 @@ ActiveRecord::Schema.define(version: 20150920150156) do
     t.integer  "sell_user_id"
     t.datetime "selloff_time"
     t.integer  "depot_id"
-    t.string   "key"
   end
 
   create_table "car_nos", force: true do |t|
@@ -415,12 +414,6 @@ ActiveRecord::Schema.define(version: 20150920150156) do
   create_table "interior_colors", force: true do |t|
     t.string   "name"
     t.string   "color"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "keys", force: true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

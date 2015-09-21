@@ -1,14 +1,14 @@
 <tr>
-                <td><%= payment.car_info.car_no %></td>
-                <td><%= payment.car_info.depot.name if payment.car_info.depot %></td>
+                <td><%= payment.car_info.car_no if payment.car_info %></td>
+                <td><%= payment.car_info.depot.name if payment.car_info && payment.car_info.depot %></td>
 								<td class="center">
                   <%= link_to "修改", edit_payment_path(payment) %>
                   <%= link_to "删除", payment_path(payment), :method => :delete, data: { confirm: "确定要删除吗" } %>
                 </td>
-                <td><%= payment.car_info.info %></td>
-                <td><%= payment.car_info.vin %></td>
-                <td><%= payment.car_info.procurement_price %>万</td>
-                <td><%= payment.car_info.deal_price %>万</td>
+                <td><%= payment.car_info.info if payment.car_info %></td>
+                <td><%= payment.car_info.vin if payment.car_info %></td>
+                <td><%= payment.car_info.procurement_price if payment.car_info %>万</td>
+                <td><%= payment.car_info.deal_price if payment.car_info %>万</td>
                 <td>
                   共有<%= payment.payment_details.count %>个项目<br>
                   <% payment.payment_details.each do |item| %>
