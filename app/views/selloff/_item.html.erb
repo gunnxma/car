@@ -11,7 +11,8 @@
                 <td><%= car.addtime.strftime("%Y-%m-%d") if car.addtime %></td>
                 <td><%= car.selloff_time.strftime("%Y-%m-%d") if car.selloff_time %></td>
                 <td><%= car.car_property.production_date.strftime("%Y-%m-%d") if car.car_property.production_date %></td>
-                <td><%= car.status_str %></td>
+                <!--<td><%= car.status_str %></td>-->
+                <td><%= car.car_property.registration_date.strftime("%Y-%m-%d") if car.car_property.registration_date %></td>
                 <td><%= car.saletype %></td>
                 <td>
                   <% if car.car_photos.count != 0 %>
